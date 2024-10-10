@@ -5,7 +5,11 @@ description = "Document model in Python"
 readme = "README.md"
 license = { file = "LICENSE" }
 authors = [{ name = "Surpris", email = "take90-it09-easy27@outlook.jp" }]
-dependencies = []
+dependencies = [
+    "ginza",
+    "ja-ginza",
+    "spacy",
+]
 requires-python = ">=3.12"
 classifiers = [
     'Development Status :: 3 - Alpha',
@@ -21,7 +25,13 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
-dev = []
+dev = [
+    "jupyterlab",
+    "autopep8",
+    "flake8",
+    "mypy",
+    "pylint",
+]
 
 [project.scripts]
 
