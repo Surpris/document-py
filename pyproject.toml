@@ -1,0 +1,44 @@
+[project]
+name = "document-py"
+version = "0.1.0"
+description = "Document model in Python"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Surpris", email = "take90-it09-easy27@outlook.jp" }]
+dependencies = [
+    "ginza",
+    "ja-ginza",
+    "spacy",
+]
+requires-python = ">=3.12"
+classifiers = [
+    'Development Status :: 3 - Alpha',
+    'Intended Audience :: Developers',
+    'Programming Language :: Python :: 3.12',
+    "Operating System :: OS Independent",
+    "Operating System :: POSIX",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    'License :: OSI Approved :: Apache Software License'
+]
+
+[project.optional-dependencies]
+dev = [
+    "jupyterlab",
+    "autopep8",
+    "flake8",
+    "mypy",
+    "pylint",
+]
+
+[project.scripts]
+
+[project.urls]
+Homepage = "https://github.com/Surpris/document-py"
+Repository = "https://github.com/Surpris/document-py"
+"Bug Tracker" = "https://github.com/Surpris/document-py/issues"
+
+[tool.setuptools.packages.find]
+exclude = []
