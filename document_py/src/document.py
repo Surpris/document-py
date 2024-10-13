@@ -94,7 +94,7 @@ class Toc:
     @staticmethod
     def from_dict(src: Dict[str, Any]) -> "Toc":
         for key in ["chapters"]:
-            src[key] = [TocSection.from_dict(d) for d in src.get(key, [])]
+            src[key] = [TocChapter.from_dict(d) for d in src.get(key, [])]
         return Toc(**src)
 
 
