@@ -326,6 +326,13 @@ class BodyParagraph:
         dst["sentences"] = [sec.to_dict() for sec in self.sentences]
         return dst
 
+    @staticmethod
+    def from_dict(src: Dict[str, Any]) -> "BodyParagraph":
+        for key in ["sentences"]:
+            src[key] = [BodySentence.from_dict(
+                d) for d in src.get(key, [])]
+        return BodyParagraph(**src)
+
     @property
     def nbr_of_sentences(self) -> int:
         return len(self.sentences)
@@ -363,6 +370,13 @@ class BodySection:
         dst = dict(vars(self).items())
         dst["paragraph"] = [sec.to_dict() for sec in self.paragraph]
         return dst
+
+    @staticmethod
+    def from_dict(src: Dict[str, Any]) -> "BodySection":
+        for key in ["paragraph"]:
+            src[key] = [BodyParagraph.from_dict(
+                d) for d in src.get(key, [])]
+        return BodySection(**src)
 
     @property
     def nbr_of_paragraph(self) -> int:
@@ -402,6 +416,13 @@ class BodyChapter:
         dst["sections"] = [sec.to_dict() for sec in self.sections]
         return dst
 
+    @staticmethod
+    def from_dict(src: Dict[str, Any]) -> "BodyChapter":
+        for key in ["sections"]:
+            src[key] = [BodySection.from_dict(
+                d) for d in src.get(key, [])]
+        return BodyChapter(**src)
+
     @property
     def nbr_of_tokens_per_section(self) -> List[int]:
         return [sec.nbr_of_tokens for sec in self.sections]
@@ -439,6 +460,13 @@ class Body:
         dst = dict(vars(self).items())
         dst["chapters"] = [chap.to_dict() for chap in self.chapters]
         return dst
+
+    @staticmethod
+    def from_dict(src: Dict[str, Any]) -> "Body":
+        for key in ["chapters"]:
+            src[key] = [BodyChapter.from_dict(
+                d) for d in src.get(key, [])]
+        return Body(**src)
 
     @property
     def nbr_of_tokens_per_chapter(self) -> List[int]:
@@ -479,6 +507,14 @@ class Document:
         dst["body"] = self.body.to_dict()
         dst["vocab"] = self.vocab.to_dict()
         return dst
+
+    @staticmethod
+    def from_dict(src: Dict[str, Any]) -> "Document":
+        src["bib_info"] = BibInfo.from_dict(src.get("bib_info", {}))
+        src["toc"] = Toc.from_dict(src.get("toc", {}))
+        src["body"] = Body.from_dict(src.get("body", {}))
+        src["vocab"] = Vocabulary.from_dict(src.get("vocab", {}))
+        return Document(**src)
 
 
 def get_sub_phrase(sentence: str):
