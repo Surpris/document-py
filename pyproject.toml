@@ -41,4 +41,4 @@ Repository = "https://github.com/Surpris/document-py"
 "Bug Tracker" = "https://github.com/Surpris/document-py/issues"
 
 [tool.setuptools.packages.find]
-exclude = []
+exclude = ["tests"]
